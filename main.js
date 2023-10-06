@@ -79,32 +79,32 @@ function getLongestWord(str) {
 function main() {
     const testData = [
         {
-            // Given test
+            name: "Given test",
             input: "smart people learn from everything and everyone, average people from their experience, stupid people already, have all the answers",
             answer: "experience",
         },
         {
-            // No input
+            name: "No input",
             input: "",
             answer: null,
         },
         {
-            // No valid words
+            name: "No valid words",
             input: "123 *!#",
             answer: null,
         },
         {
-            // One long word with some non english characters at the end
+            name: "One long word with some non english characters at the end",
             input: "GandalfTheGrayUsingHisMagic!!",
             answer: "gandalfthegrayusinghismagic",
         },
         {
-            // Vowel counting
+            name: "Vowel counting",
             input: "apple banana cherry date",
             answer: "banana",
         },
         {
-            // Turkish characters with specials characters
+            name: "Turkish characters with @ symbol",
             input: "ÇömpÜt3r PrÖgr@mm1ng",
             answer: "prgrmmng",
         },
@@ -121,8 +121,7 @@ function main() {
 
     const programStart = performance.now();
 
-    for (let i = 0; i < testData.length; i++) {
-        const data = testData[i];
+    for (const data of testData) {
         const start = performance.now();
         const answer = getLongestWord(data.input);
         const timeTookMs = performance.now() - start;
@@ -131,7 +130,7 @@ function main() {
             timeMs: timeTookMs,
             correct: isAnswerCorrect,
         });
-        console.log(`Test ${i} - ${isAnswerCorrect ? "Correct" : "Wrong"}, took: ${timeTookMs}ms`);
+        console.log(`${data.name} - ${isAnswerCorrect ? "Correct" : "Wrong"}, took: ${timeTookMs}ms`);
     }
 
     console.table(answerData);
